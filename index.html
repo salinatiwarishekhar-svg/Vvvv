@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTRICTED ACCESS</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            background-color: #000;
+            color: white;
+        }
+
+        .page {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .active { display: flex; }
+
+        /* Page 1: Caution Style */
+        #page1 { background-color: #d32f2f; color: white; }
+        .warning-icon { font-size: 50px; margin-bottom: 20px; }
+
+        /* Page 2: Profile Style */
+        #page2 { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&q=80&w=1000'); background-size: cover; }
+        .profile-card { border: 2px solid #ff4d6d; padding: 20px; border-radius: 15px; background: rgba(0,0,0,0.6); }
+
+        /* Page 3: Steamy Style */
+        #page3 { 
+            background: linear-gradient(rgba(20,0,0,0.7), rgba(20,0,0,0.7)), url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3NidXFmZGF6NjVqZ3R5cmh0Zmx0ZzR3YnZ3eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKVUn7iM8FMEU24/giphy.gif'); 
+            background-size: cover; 
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-verify { background: white; color: #d32f2f; }
+        .btn-agree { background: #ff4d6d; color: white; margin-right: 10px; }
+        .btn-disagree { background: #444; color: #999; cursor: not-allowed; }
+        .btn-proceed { background: #ff0000; color: white; box-shadow: 0 0 20px #ff0000; }
+
+        h1 { text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="page active">
+        <div class="warning-icon">⚠️</div>
+        <h1>18+ Restricted Content - Caution</h1>
+        <p>This access is strictly monitored.</p>
+        <button class="btn-verify" onclick="nextPage(2)">Verify Your Identity</button>
+    </div>
+
+    <div id="page2" class="page">
+        <div class="profile-card">
+            <h2>Identity Confirmed:</h2>
+            <h1 style="color: #ff4d6d;">Ajit Shekhar</h1>
+            <p><i>Aka Batman / Vengeance / Husband of hottest girl in the world</i></p>
+            <hr>
+            <p><strong>Status:</strong> Married (Best decision ever)</p>
+            
+            <div>
+                <button class="btn-agree" onclick="nextPage(3)">Agree</button>
+                <button class="btn-disagree" onmouseover="troll()">Disagree</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <h1 style="color: #ff0000; font-size: 3rem;">RISK LEVEL: SPICY 5X 🌶️</h1>
+        <p style="font-size: 1.5rem;">Enter at your own risk...</p>
+        <div style="margin-top: 20px;">
+            <button class="btn-proceed" onclick="finalReveal()">Proceed</button>
+            <button class="btn-disagree" style="margin-left: 10px;">Quit</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+        }
+
+        function troll() {
+            alert("Error 404: Disagreeing is not an option for Batman.");
+        }
+
+        function finalReveal() {
+            // This is where you'll link to the final "Valentine" question 
+            // For now, let's just trigger confetti!
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            alert("Redirecting to the heart of the matter...");
+            // window.location.href = "valentine_part.html"; // You can link files later!
+        }
+    </script>
+</body>
+</html>
